@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <!-- Diretiva v-once = atualiza apenas uma vez o elemento -->
+    <p v-once >{{titulo}}</p> 
+    <p>{{saudacao()}}</p>
+    <!-- Diretiva v-bind linka uma propriede como uma variável -->
+    <a v-bind:href="link" target="_blank">Google</a>
+    <!-- Diretiva v-html adiciona um elemento html -->
+    <p v-html="linkHtml">Google</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'Usando VueJS 2!!!',
+            link: 'http://www.google.com.br',
+            linkHtml:'<a href="http://www.google.com.br" target="_blank">Google</a>' 
+        },
+        methods:{
+            saudacao(){    
+                this.titulo = 'Bom Dia!!'
+                return this.titulo
+           }
+        }
+    }) 
+</script>

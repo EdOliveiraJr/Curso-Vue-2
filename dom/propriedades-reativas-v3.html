@@ -1,0 +1,57 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- TWO WAY DATA BIND: mão dupla de transito de dados entre view e vue framework / REATIVIDADE -->
+
+<div id="app">
+    <p>{{titulo}}</p>
+    <p>{{contador}} | {{contador2}}</p>
+    <!-- Resultado só muda quando for chamda, e vez de uma resultado() que seria chamada a cada atualização da DOM -->
+    <p>{{resultado}}</p> 
+    <button v-on:click="aumentar" >Aumentar</button>
+    <!-- v-on == @ - sintaxe reduzida -->
+    <button @click="contador2++" >Aumentar 2</button> 
+    <button v-on:click="diminuir" >Diminuir</button>
+    <hr>
+    <!-- v-bind == : - sintaxe reduzida do bind -->
+    <input type="text" :value="contador2">
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'Usando VueJS 2!!!',
+            contador: 0,
+            contador2: 0,
+        },
+        // Propriedades compudatas servem para reatividade 
+        //e evitam que funções sejam chamadas desnecessariamente. Foco em ações sincronas
+        computed:{
+            resultado(){
+                return this.contado  < 5 ? 'Menor que 5': 'Maior que 5'
+            }
+        },
+        // fica observando a variável e pode executar ações assincronas a depender das alterações que ela sofre. Ex: dispara um setTimeout quando alterada.
+        watch:{
+            contador(novo, antigo){
+                console.log(novo, antigo);
+                setTimeout(()=>{
+                    this.contador = 0
+                },2000)
+            }
+        },
+        methods:{
+            aumentar(){
+                this.contador++
+            },
+            diminuir(){
+                this.contador--
+            },
+            // resultado(){
+            //     return this.contador < 5 ? 'Menor que 5': 'Maior que 5'
+            // }
+        }
+
+    }) 
+</script>

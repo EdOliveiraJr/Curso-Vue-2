@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{contador}}</p>
+    <!-- Diretiva v-on serve para escutar eventos nos elementos
+         e realizar alguma função(ex: evento = click e função somarUm) -->
+    <button v-on:click="somarUm">Somar 1</button>
+    <button v-on:click="limpar">Limpar</button>
+   
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            contador: 0,
+        },
+        methods:{
+            somarUm(){
+                this.contador++
+            },
+            limpar(){
+                this.contador = 0
+            }
+        }
+    }) 
+</script>

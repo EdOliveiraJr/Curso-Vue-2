@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{contador}}</p>
+    <!-- Diretiva v-on serve para escutar eventos nos elementos
+         e realizar alguma função(ex: evento = click e função somarUm) -->
+    <!-- Soma com passagem de parametro no v-on e a palavra reservada $event para passar o evento junto com o parametro-->
+    <button v-on:click="somar(5, $event)">Somar</button> 
+    <button v-on:click="limpar">Limpar</button>
+    <p v-on:mousemove="atualizarXY"> Mouse: {{x}} e {{y}}</p>
+   
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            contador: 0,
+
+            x: 0,
+            y: 0,
+        },
+        methods:{
+            somar(passo, e){
+                console.log(passo,e);
+                this.contador += passo
+            },
+            limpar(){
+                this.contador = 0
+            },
+            // Uso do evento event para pegar informações do mouse
+            atualizarXY(event){
+                this.x = event.clientX
+                this.y = event.clientY
+            }
+        }
+    }) 
+</script>

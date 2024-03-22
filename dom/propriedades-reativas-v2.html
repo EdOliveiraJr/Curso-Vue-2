@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- TWO WAY DATA BIND: mão dupla de transito de dados entre view e vue framework / REATIVIDADE -->
+
+<div id="app">
+    <p>{{titulo}}</p>
+    <p>{{contador}} | {{contador2}}</p>
+    <!-- Resultado só muda quando for chamda, e vez de uma resultado() que seria chamada a cada atualização da DOM -->
+    <p>{{resultado}}</p> 
+    <button v-on:click="aumentar" >Aumentar</button>
+    <button v-on:click="contador2++" >Aumentar 2</button>
+    <button v-on:click="diminuir" >Diminuir</button>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'Usando VueJS 2!!!',
+            contador: 0,
+            contador2: 0,
+        },
+        // Propriedades compudatas servem para reatividade 
+        //e evitam que funções sejam chamadas desnecessariamente
+        computed:{
+            resultado(){
+                return this.contador < 5 ? 'Menor que 5': 'Maior que 5'
+            }
+        },
+        methods:{
+            aumentar(){
+                this.contador++
+            },
+            diminuir(){
+                this.contador--
+            },
+            // resultado(){
+            //     return this.contador < 5 ? 'Menor que 5': 'Maior que 5'
+            // }
+        }
+
+    }) 
+</script>

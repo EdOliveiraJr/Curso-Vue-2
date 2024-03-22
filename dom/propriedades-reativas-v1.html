@@ -1,0 +1,20 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!-- TWO WAY DATA BIND: mão dupla de transito de dados entre view e vue framework / REATIVIDADE -->
+
+<div id="app">
+    <p>{{titulo}}</p>
+    <input type="text" v-bind:value="titulo" v-on:input="titulo = $event.target.value">
+    <!-- OU -->
+    <input type="text" v-model="titulo">
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'Usando VueJS 2!!!'
+        }
+    }) 
+</script>
