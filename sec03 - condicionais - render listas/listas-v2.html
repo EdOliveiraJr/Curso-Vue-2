@@ -10,7 +10,17 @@
         <div>
             <p>{{i}}</p> - <h3>{{cor}}</h3>
         </div>
-    </template>    
+    </template>
+    <ul>
+        <li v-for="(pessoa, index) in pessoas">
+            Pessoa {{index}}
+            <hr>
+            <div v-for="(valor, chave, index) in pessoa">
+                {{index}} - {{chave}}: {{valor}}
+            </div>
+            <hr>
+        </li>    
+    </ul>
 </div>
 
 <script>
@@ -19,8 +29,8 @@
         data: {
             cores: ['vermelho','verde','amarelo','preto','azul'],
             pessoas:[
-                {nome: 'Tainá', Idade: 26, Peso: 80},
-                {nome: 'Junior', Idade: 36, Peso: 80},
+                {nome: 'Tainá', idade: 26, peso: 80},
+                {nome: 'Junior', idade: 36, peso: 80},
             ]
         }
     })
