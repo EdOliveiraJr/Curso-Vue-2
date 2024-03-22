@@ -1,0 +1,25 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <!-- Uso da tag templete faz com que reenderize apenas o conteúdo interno da tag, com nenhuma outra tag envolvendo o conteúdo diferente do caso de div -->
+    <template v-if="login">
+        <p>Perfil: Admin</p>
+        <p v-if="login" > Usuario Logado: {{ nome }} </p>
+    </template>
+    <p v-else-if="anonimo">Navegando como anônimo</p>
+    <p v-else > Nenhum usuario logado </p>
+    <button @click="login = !login"> {{login == true ? 'Sair' : "Entrar"}} </button>
+    <input type="checkbox" name="" id="" v-model="anonimo" >
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            nome: 'Junior',
+            login: false,
+            anonimo: false,
+        }
+    })
+</script>
