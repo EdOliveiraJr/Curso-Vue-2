@@ -37,7 +37,7 @@ new Vue({
 		},
 		aplicarAtencao(event){
 			event.target.value == 'true' ? this.atencao = true : this.atencao = false
-			
+	
 		}
 	}
 })
