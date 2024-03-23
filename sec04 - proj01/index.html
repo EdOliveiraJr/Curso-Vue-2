@@ -45,8 +45,17 @@
             <button v-else class="btn new-game" @click="iniciarJogo" > Iniciar Jogo </button>
         </div>
         <div class="panel logs">
-            <ul>
-                <li></li>
+            <ul class="logs">
+                <li class="logs" v-for="registro in registros">
+                    <template v-if="registro.cura">
+                        <p class="monster">Monstro atingiu Jogador com: {{registro.ataqueMonstro}}</p>
+                        <p class="player">Jogador se curou com: {{registro.cura}}</p>
+                    </template>
+                    <template v-else>
+                        <p class="monster">Monstro atingiu Jogador com: {{registro.ataqueMonstro}}</p>
+                        <p class="player">Jogador atingiu Monstro com: {{registro.ataqueJogador}}</p>
+                    </template>
+                </li>
             </ul>
         </div>
     </div>
