@@ -44,7 +44,7 @@
             </template>
             <button v-else class="btn new-game" @click="iniciarJogo" > Iniciar Jogo </button>
         </div>
-        <div class="panel logs">
+        <div v-if="registros.length" class="panel logs">
             <ul class="logs">
                 <li class="logs" v-for="registro in registros">
                     <template v-if="registro.cura">
