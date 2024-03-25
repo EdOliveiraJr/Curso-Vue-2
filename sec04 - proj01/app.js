@@ -53,10 +53,10 @@ new Vue({
             this.zeroLife()
         },
         registraAtaque( ataqueJogador, ataqueMonstro){
-            this.registros.push({'ataqueJogador':ataqueJogador,'ataqueMonstro':ataqueMonstro})
+            this.registros.unshift({'ataqueJogador':ataqueJogador,'ataqueMonstro':ataqueMonstro})
         },
         registraCura(cura,ataqueMonstro){
-            this.registros.push({'cura': cura,'ataqueMonstro': ataqueMonstro})
+            this.registros.unshift({'cura': cura,'ataqueMonstro': ataqueMonstro})
         }
     },
     watch:{
