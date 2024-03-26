@@ -6,9 +6,3 @@
         </v-toolbar-title>
     </v-app-bar>
 </template>
-
-<script>
-</script>
-
-<style>
-</style>
