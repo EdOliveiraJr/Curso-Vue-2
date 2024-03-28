@@ -2,6 +2,7 @@
 	<div id="app">
 		<h1>Tarefas</h1>
 		<FormTarefa @tarefaAdicionada="adicionarTarefa($event)"/>
+		<BarraProgresso :progresso="progresso"/>
 		<Tarefas :tarefas="tarefas"
 			@tarefaExcluida="excluirTarefa"
 			@novoEstado="alteraEstado"> 
@@ -12,15 +13,16 @@
 <script>
 import Tarefas from './components/Tarefas.vue';
 import FormTarefa from './components/FormTarefa.vue';
+import BarraProgresso from './components/BarraProgresso.vue'
 
 export default {
-	components:{Tarefas, FormTarefa},
+	components:{Tarefas, FormTarefa, BarraProgresso},
 	data() {
 		return {
 			tarefas: [
 				{nome:'lavar', estado: false },
 				{nome:'passar', estado: true },
-			]
+			],
 		}
 	},
 	methods:{
@@ -32,6 +34,14 @@ export default {
 		},
 		alteraEstado(index){
 			this.tarefas[index].estado = !this.tarefas[index].estado
+		},
+		
+	},
+	computed:{
+		progresso(){
+			const totalTarefas = this.tarefas.length
+			const tarefasFeitas = this.tarefas.filter( t => t.estado == true).length
+			return Math.round(tarefasFeitas / totalTarefas * 100) || 0
 		}
 	}
 }
