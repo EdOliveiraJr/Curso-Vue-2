@@ -3,10 +3,15 @@
 		<h1>Tarefas</h1>
 		<FormTarefa @tarefaAdicionada="adicionarTarefa($event)"/>
 		<BarraProgresso :progresso="progresso"/>
-		<Tarefas :tarefas="tarefas"
-			@tarefaExcluida="excluirTarefa"
-			@novoEstado="alteraEstado"> 
-		</Tarefas>
+		<template>
+			<div v-if="this.tarefas.length == 0">
+				<h2>Você está com a vida em dias!!! 8)</h2>
+			</div>
+			<Tarefas v-else :tarefas="tarefas"
+				@tarefaExcluida="excluirTarefa"
+				@novoEstado="alteraEstado"> 
+			</Tarefas>
+		</template>
 	</div>
 </template>
 
@@ -19,11 +24,28 @@ export default {
 	components:{Tarefas, FormTarefa, BarraProgresso},
 	data() {
 		return {
-			tarefas: [
-				{nome:'lavar', estado: false },
-				{nome:'passar', estado: true },
-			],
+			tarefas: [],
 		}
+	},
+	computed:{
+		progresso(){
+			const totalTarefas = this.tarefas.length
+			const tarefasFeitas = this.tarefas.filter( t => t.estado == true).length
+			return Math.round(tarefasFeitas / totalTarefas * 100) || 0
+		}
+	},
+	watch: {
+		tarefas: {
+			deep : true,
+			handler(){
+				localStorage.setItem('tarefas', JSON.stringify(this.tarefas))
+			}
+		}
+	},
+	created(){
+		const json = localStorage.getItem('tarefas')
+		const array = JSON.parse(json)
+		this.tarefas = Array.isArray(array) ? array : []
 	},
 	methods:{
 		adicionarTarefa(task){
@@ -37,13 +59,6 @@ export default {
 		},
 		
 	},
-	computed:{
-		progresso(){
-			const totalTarefas = this.tarefas.length
-			const tarefasFeitas = this.tarefas.filter( t => t.estado == true).length
-			return Math.round(tarefasFeitas / totalTarefas * 100) || 0
-		}
-	}
 }
 </script>
 
