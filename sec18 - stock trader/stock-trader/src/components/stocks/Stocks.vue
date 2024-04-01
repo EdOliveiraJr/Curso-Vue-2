@@ -1,12 +1,20 @@
 <template>
-    <div>
-        <h1>Ações</h1>
-    </div>
+        <v-layout row wrap>
+            <Stock v-for="stock in stocks" :key="stock.id" :stock="stock">
+            </Stock>
+        </v-layout>
 </template>
 
 <script>
-export default {
+import Stock from './Stock.vue';
 
+export default {
+    components: { Stock},
+    computed:{
+        stocks(){
+            return this.$store.getters.stocks
+        }
+    }
 }
 </script>
 
