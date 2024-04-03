@@ -12,6 +12,7 @@ export default {
                     stocksPortfolio: data.stocksPortfolio
                 })
             }
+            alert('Dados carregados com sucesso!')
         })
     }
 }

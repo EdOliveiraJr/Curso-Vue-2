@@ -58,8 +58,8 @@ export default {
         saveData(){
             const {funds, stocksPortfolio, stocks } = this.$store.getters
             this.$http.put('data.json', {funds, stocksPortfolio, stocks})
-            // .then(resp => { alert('Dados salvos com sucesso!')})
-            // .catch(error =>{alert('Ocorreu algum erro durante a operação!')})
+            .then(resp => { alert('Dados salvos com sucesso!')})
+            .catch(error =>{ alert('Ocorreu algum erro durante a operação!')})
         },
         loadDataLocal(){
             this.loadData()
