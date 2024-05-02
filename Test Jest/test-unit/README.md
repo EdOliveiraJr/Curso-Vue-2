@@ -1,4 +1,4 @@
-# test-jest
+# test-unit
 
 ## Project setup
 ```
@@ -20,9 +20,9 @@ npm run build
 npm run test:unit
 ```
 
-### Lints and fixes files
+### Run your end-to-end tests
 ```
-npm run lint
+npm run test:e2e
 ```
 
 ### Customize configuration
