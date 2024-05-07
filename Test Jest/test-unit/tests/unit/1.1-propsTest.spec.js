@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-const App2 = {
+const App = {
   props: {
     count: {
       type: Number
@@ -10,8 +10,8 @@ const App2 = {
 }
 
 
-test('App2', () =>{
-  const wrapper = mount(App2, {
+test('App', () =>{
+  const wrapper = mount(App, {
     props: {
       count: 1
     }
