@@ -1,31 +1,27 @@
 import { mount } from "@vue/test-utils";
+import App from "./App.vue";
+import { createStore } from "vuex";
 
-const App = {
-  data() {
-    return {
-      count: 0
+const createVuexStore = ()=> {
+  return createStore ({
+    state() {
+      return {
+        count: 0
+      }
+    },
+    mutations: {
+      increment(state) {
+        state.count++
+      }
     }
-  },
-  methods: {
-    increment(){
-      this.count++;
-    }
-  },
-  template:`
-    <button @click="increment"> + </button>
-    <div v-if="count % 2 === 0">
-      Count: {{ count }}. Count is even.
-    </div>
-    <div v-if="count % 2 !== 0">
-      Count: {{ count }}. Count is odd.
-    </div>
-  `
+  })
 }
 
-function factory({data} = { data:{} }) {
-  return mount(App,{
-    data(){
-      return data
+function factory() {
+  const store = createVuexStore()
+  return mount(App, {
+    global: {
+      plugins: [store]
     }
   })
 }
