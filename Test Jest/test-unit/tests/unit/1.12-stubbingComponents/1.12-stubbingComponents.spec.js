@@ -34,9 +34,9 @@ describe('App', () =>{
     const wrapper = factory()
     await wrapper.find('button').trigger('click')
     await wrapper.find('button').trigger('click')
-    console.log(wrapper.html())
     expect(wrapper.html()).toContain('Count: 2. Count is even.')
   })
+  
   it('render count when odd', async ()=>{
     const wrapper = factory()
     await wrapper.find('button').trigger('click')
