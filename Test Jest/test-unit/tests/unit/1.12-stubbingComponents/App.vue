@@ -13,7 +13,6 @@
 import Fetcher from './Fetcher.vue';
 
 export default {
-  name: 'App',
   components:{ Fetcher },
   computed: {
     count(){
